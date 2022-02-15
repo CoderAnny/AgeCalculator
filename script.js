@@ -2,6 +2,7 @@ var ydob = document.getElementById("ydob");
 var cd = document.getElementById("cd");
 var btn = document.getElementById("btn");
 var btn1 = document.getElementById("reload");
+
 let show = () => {
   var bdate = new Date(document.getElementById("dob").value);
   var bday = bdate.getDate();
@@ -9,7 +10,7 @@ let show = () => {
   var byear = bdate.getFullYear();
   const today = new Date();
   const tday = today.getDate();
-  const tmonth = today.getMonth();
+  const tmonth = today.getMonth() + 1;
   const tyear = today.getFullYear();
   ydob.innerHTML = `${bday}-${bmonth}-${byear}`;
   cd.innerHTML = `${tday}-${tmonth}-${tyear}`;
@@ -51,52 +52,63 @@ let cal_age = () => {
     (birthDetails.date > tday &&
       birthDetails.month == tmonth &&
       birthDetails.year == tyear)
-  ) {
-    alert("----- NO BORN YET ------");
-    display("-", "-", "-");
-    return false;
-  }
+  ) 
+  {
+    alert("----- NO BORN YET ------\n\nKindly Check date you Entered!");
+    window.location.reload();
+  } 
+  else
+   {
+    byear = tyear - birthDetails.year;
 
-  byear = tyear - birthDetails.year;
-
-  if (tmonth >= birthDetails.month) {
-    bmonth = tmonth - birthDetails.month;
-  } else {
-    byear--;
-    bmonth = 12 + tmonth - birthDetails.month;
-  }
-
-  if (tday >= birthDetails.date) {
-    bday = tday - birthDetails.date;
-  } else {
-    bmonth--;
-    let days = months[tmonth - 2];
-    bday = days + tday - birthDetails.date;
-    if (bmonth < 0) {
-      bmonth = 11;
+    if (tmonth >= birthDetails.month) 
+    {
+      bmonth = tmonth - birthDetails.month;
+    } 
+    else
+     {
       byear--;
+      bmonth = 12 + tmonth - birthDetails.month;
     }
+
+    if (tday >= birthDetails.date) {
+      bday = tday - birthDetails.date;
+    } 
+    else 
+    {
+      bmonth--;
+      let days = months[tmonth - 2];
+      bday = days + tday - birthDetails.date;
+      if (bmonth < 0) {
+        bmonth = 11;
+        byear--;
+      }
+    }
+    display(bday, bmonth, byear);
   }
-  display(bday, bmonth, byear);
 };
 
 btn.addEventListener("click", function () {
   var bdate = new Date(document.getElementById("dob").value);
-  var bday = bdate.getDate();
-  var bmonth = bdate.getMonth() + 1;
-  var byear = bdate.getFullYear();
-  const today = new Date();
-  const tday = today.getDate();
-  const tmonth = today.getMonth();
-  const tyear = today.getFullYear();
-  ydob.innerHTML = `${bday}-${bmonth}-${byear}`;
-  cd.innerHTML = `${tday}-${tmonth}-${tyear}`;
-  document.getElementById("display").style.display = "block";
-  document.querySelector("header").style.display = "none";
-  cal_age();
+  console.log(bdate);
+  if (bdate == "Invalid Date") {
+    alert("- - - - - ERROR - - - - - \n\nInput cannot be Blank!!");
+  } else {
+    var bday = bdate.getDate();
+    var bmonth = bdate.getMonth() + 1;
+    var byear = bdate.getFullYear();
+    const today = new Date();
+    const tday = today.getDate();
+    const tmonth = today.getMonth() + 1;
+    const tyear = today.getFullYear();
+    ydob.innerHTML = `${bday}-${bmonth}-${byear}`;
+    cd.innerHTML = `${tday}-${tmonth}-${tyear}`;
+    document.getElementById("display").style.display = "block";
+    document.querySelector("header").style.display = "none";
+    cal_age();
+  }
 });
 
-
 btn1.addEventListener("click", function () {
-  location.reload();
+  window.location.reload();
 });

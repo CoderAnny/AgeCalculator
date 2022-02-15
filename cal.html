@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGE CALCULATOR</title>
+    <link rel="icon" href="img/icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header><h1>AGE CALCULATOR</h1></header>
+    <div id="main-div">
+        <input type="date" id="dob" onkeyup="show()" autofocus/><br><br>
+        <h1 id="hone">Your Birth Date is : <span id="ydob"></span></h1>
+        <h1 id="htwo">Currnet date is : <span id="cd"></span></h1>
+        <center>
+            <button type="submit" id="btn">Check Your Age 🤩</button>
+        </center>
+        <div id="display">
+            <h1>Your Age is </h1>
+            <ul>
+                <li id="years"></li>
+                <li id="months"></li>
+                <li id="days"></li>
+            </ul>
+            <button type="submit"id="reload">REFRESH</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

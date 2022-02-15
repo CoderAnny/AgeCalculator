@@ -5,30 +5,285 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/icon.png">
+    <title>AGE CALCULATOR</title>
+    <style>
+        /* Styling elements on index.html Page */
+        @import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Rowdies&display=swap');
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            width: 100vw;
+            user-select: none;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            width: 100%;
+            height: auto;
+            padding: 2rem;
+            background-color: purple;
+            color: #fff;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 900;
+            text-shadow: 1rem 2rem 0.6rem #000;
+            font-size: 2rem;
+        }
+
+        #imgdiv {
+            width: 90%;
+            margin: 4rem auto;
+            box-shadow: 0.2rem 0.2rem 0.3rem 0.2rem #000;
+            display: flex;
+            background-color: #8c7ae6;
+        }
+
+        #content-div {
+            flex-basis: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #content-div .container {
+            width: 80%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        #content-div .container img {
+            width: 10rem;
+            height: 10rem;
+        }
+
+        #content-div .container h1 {
+            font-size: 4rem;
+            padding-top: 2rem;
+            font-family: 'Nosifer', cursive;
+            color: #fff;
+        }
+
+        #content-div .container a {
+            text-decoration: none;
+            background-color: #353b48;
+            font-size: 2rem;
+            font-family: 'Rowdies', cursive;
+            padding: 1.5rem 2rem;
+            color: #ffd;
+            border-radius: 2rem;
+        }
+
+        #content-div .container a:hover {
+            background-color: #ffd;
+            color: #353b48;
+            border: .2rem solid#353b48;
+        }
+
+        #imgdiv1 {
+            flex-basis: 40%;
+            height: 100%;
+        }
+
+        #imgdiv1 img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #mywork {
+            width: 90%;
+            height: auto;
+            margin: 4rem auto ;        
+        }
+
+        #mywork h1 {
+            font-size: 3.5rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            color: orangered;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #mywork #table-container {
+            width: 100%;
+            padding:2rem;
+        }
+
+        #mywork #table-container table {
+            width: 100%;
+            border:0.3rem ridge lightskyblue;
+            border-collapse: collapse;
+        }
+
+        #mywork #table-container table th,
+        td {
+            padding: 2rem;
+            font-size: 2rem;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        #mywork #table-container table td {
+            font-size: 1.5rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+        }
+
+        #mywork #table-container table td a {
+            text-decoration: none;
+            background-color: green;
+            color: #fff;
+            padding: 1rem 2rem;
+            border: .1rem solid #000;
+        }
+
+        #mywork #table-container table td a:hover {
+            background-color: #fff;
+            color: green;
+        }
+
+        footer{
+            background-color: #000;
+            color: #ffd;
+            font-size: 2rem;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding: 2rem 3rem;
+        }
+
+        @media (max-width:698px) {
+            html {
+                font-size: 50%;
+            }
+            #imgdiv {
+                width: 90%;
+                height: auto;
+                display: block;
+                margin: 5rem auto;
+                padding: 2rem 0rem;
+            }
+            #imgdiv .container {
+                display: block;
+            }
+            #mywork{
+                border:.3rem groove  #000;
+                overflow-x: scroll;
+            }
+        }
+
+        /* ================================================== */
+    </style>
 </head>
 
-<body>
-    <header><h1>AGE CALCULATOR</h1></header>
-    <div id="main-div">
-        <input type="date" id="dob" onkeyup="show()" placeholder="MM/DD/YYYY" /><br><br>
-        <h1 id="hone">Your Birth Date is : <span id="ydob"></span></h1>
-        <h1 id="htwo">Currnet date is : <span id="cd"></span></h1>
-        <center>
-            <button type="submit" id="btn">Check Your Age 🤩</button>
-        </center>
-        <div id="display">
-            <h1> ------- Your Age is -------- </h1>
-            <ul>
-                <li id="years"></li>
-                <li id="months"></li>
-                <li id="days"></li>
-            </ul>
-            <button type="submit"id="reload">Enter new Date :</button>
+<body onload="change()">
+    <header>
+        <h1>AGE CALCULATOR</h1>
+    </header>
+    <div id="imgdiv">
+        <div id="content-div">
+            <div class="container">
+                <img src="img/icon.png" alt="icon">
+                <h1>age calculator</h1>
+            </div>
+            <div class="container">
+                <a href="cal.html">Calcualte Now &rArr;</a>
+            </div>
+        </div>
+
+        <div id="imgdiv1">
+            <img src="img/mainBg.png" alt="MainBg">
+        </div>
+
+    </div>
+
+    <div id="mywork">
+        <h1>Websites I designed</h1><br>
+        <div id="table-container">
+            <table border="1">
+                <tr>
+                    <th>Website NAME</th>
+                    <th>Website URL</th>
+                    <th>Link To Website</th>
+                </tr>
+                <tr>
+                    <td>C-Programming2020</td>
+                    <td>https://c-programming2020.blogspot.com</td>
+                    <td><a href="https://c-programming2020.blogspot.com/" class="vb">Visit Website</a></td>
+                </tr>
+                <tr>
+                    <td>JavaProgramming</td>
+                    <td>https://javaprogramming8023.blogspot.com</td>
+                    <td><a href="https://javaprogramming8023.blogspot.com/" class="vb">Visit Website</a></td>
+                </tr>
+                <tr>
+                    <td>Learn C++</td>
+                    <td>https://cpplearning2020.blogspot.com</td>
+                    <td><a href="https://cpplearning2020.blogspot.com/" class="vb">Visit Website</a></td>
+                </tr>
+                <tr>
+                    <td>PythonStar</td>
+                    <td>https://pythonstar99.blogspot.com</td>
+                    <td><a href="https://pythonstar99.blogspot.com/" class="vb">Visit Website</a></td>
+                </tr>
+                <tr>
+                    <td>Web-Development2020</td>
+                    <td>https://webdevlopment2020.blogspot.com</td>
+                    <td><a href="https://webdevlopment2020.blogspot.com/" class="vb">Visit Website</a></td>
+                </tr>
+                <tr>
+                    <td>Weather Status</td>
+                    <td>https://myweatherapp2021.web.app</td>
+                    <td><a href="https://myweatherapp2021.web.app/" class="vb">Visit Website</a></td>
+                </tr>
+                <tr>
+                    <td>Anny's Resume Builder</td>
+                    <td>https://resumebuilderbyanny2021.web.app</td>
+                    <td><a href="https://resumebuilderbyanny2021.web.app/" class="vb">Visit Website</a></td>
+                </tr>
+                <tr>
+                    <td>My ui Colors</td>
+                    <td>https://myuirgbcolors.web.app</td>
+                    <td><a href="https://myuirgbcolors.web.app/" class="vb">Visit Website</a></td>
+                </tr>
+                <tr>
+                    <td>Expression Convertor</td>
+                    <td>https://expconvertor.web.app</td>
+                    <td><a href="https://expconvertor.web.app/" class="vb">Visit Website</a></td>
+                </tr>
+
+            </table>
         </div>
     </div>
-    <script src="script.js"></script>
+    <footer>
+        <h4>&copy;CoderAnny</h4>
+    </footer>
+    <script>
+        // Change content of website
+        function change() {
+            var ti = document.getElementsByClassName("vb");
+            var sw = window.screen.width;
+            if (sw < 600) {
+                for (var i = 0; i < ti.length; i++) {
+                    ti[i].innerText = "Visit";
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>
